@@ -24,7 +24,7 @@ class AudioPlayer {
       const MethodChannel('xyz.luan/audioplayers')
         ..setMethodCallHandler(platformCallHandler);
 
-  static const _uuid = Uuid();
+  // static const _uuid = Uuid();
 
   final StreamController<PlayerState> _playerStateController =
       StreamController<PlayerState>.broadcast();
@@ -127,7 +127,7 @@ class AudioPlayer {
 
   /// Creates a new instance and assigns an unique id to it.
   AudioPlayer({this.mode = PlayerMode.MEDIA_PLAYER, String? playerId})
-      : playerId = playerId ?? _uuid.v4() {
+      : playerId = playerId ?? Uuid().v4() {
     players[this.playerId] = this;
     notificationService = NotificationService(_invokeMethod);
   }
